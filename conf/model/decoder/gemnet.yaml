@@ -1,4 +1,4 @@
-_target_: cdvae.pl_modules.decoder.GemNetTDecoder
+_target_: pl_modules.decoder.GemNetTDecoder
 hidden_dim: 128
 latent_dim: ${model.latent_dim}
 max_neighbors: ${model.max_neighbors}

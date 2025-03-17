@@ -10,12 +10,12 @@ from torch.nn import functional as F
 from torch_scatter import scatter
 from tqdm import tqdm
 
-from cdvae.common.utils import PROJECT_ROOT
-from cdvae.common.data_utils import (
+from common.utils import PROJECT_ROOT
+from common.data_utils import (
     EPSILON, cart_to_frac_coords, mard, lengths_angles_to_volume,
     frac_to_cart_coords, min_distance_sqr_pbc)
-from cdvae.pl_modules.embeddings import MAX_ATOMIC_NUM
-from cdvae.pl_modules.embeddings import KHOT_EMBEDDINGS
+from pl_modules.embeddings import MAX_ATOMIC_NUM
+from pl_modules.embeddings import KHOT_EMBEDDINGS
 
 
 def build_mlp(in_dim, hidden_dim, fc_num_layers, out_dim):

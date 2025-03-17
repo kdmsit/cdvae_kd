@@ -1,4 +1,4 @@
-_target_: cdvae.pl_modules.gnn.DimeNetPlusPlusWrap
+_target_: pl_modules.gnn.DimeNetPlusPlusWrap
 num_targets: ${data.num_targets}
 hidden_channels: 128
 num_blocks: 4

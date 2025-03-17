@@ -14,12 +14,12 @@ from torch_geometric.nn.models.dimenet import (
 )
 from torch_sparse import SparseTensor
 
-from cdvae.common.data_utils import (
+from common.data_utils import (
     get_pbc_distances,
     frac_to_cart_coords,
     radius_graph_pbc_wrapper,
 )
-from cdvae.pl_modules.gemnet.gemnet import GemNetT
+from pl_modules.gemnet.gemnet import GemNetT
 
 try:
     import sympy as sym

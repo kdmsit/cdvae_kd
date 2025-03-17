@@ -7,8 +7,8 @@ from torch.utils.data import Dataset
 
 from torch_geometric.data import Data
 
-from cdvae.common.utils import PROJECT_ROOT
-from cdvae.common.data_utils import (
+from common.utils import PROJECT_ROOT
+from common.data_utils import (
     preprocess, preprocess_tensors, add_scaled_lattice_prop)
 
 
@@ -126,7 +126,7 @@ class TensorCrystDataset(Dataset):
 @hydra.main(config_path=str(PROJECT_ROOT / "conf"), config_name="default")
 def main(cfg: omegaconf.DictConfig):
     from torch_geometric.data import Batch
-    from cdvae.common.data_utils import get_scaler_from_data_list
+    from common.data_utils import get_scaler_from_data_list
     dataset: CrystDataset = hydra.utils.instantiate(
         cfg.data.datamodule.datasets.train, _recursive_=False
     )

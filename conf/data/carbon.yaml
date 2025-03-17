@@ -20,11 +20,11 @@ teacher_forcing_max_epoch: 1000
 
 
 datamodule:
-  _target_: cdvae.pl_data.datamodule.CrystDataModule
+  _target_: pl_data.datamodule.CrystDataModule
 
   datasets:
     train:
-      _target_: cdvae.pl_data.dataset.CrystDataset
+      _target_: pl_data.dataset.CrystDataset
       name: Formation energy train
       path: ${data.root_path}/train.csv
       prop: ${data.prop}
@@ -35,7 +35,7 @@ datamodule:
       preprocess_workers: ${data.preprocess_workers}
 
     val:
-      - _target_: cdvae.pl_data.dataset.CrystDataset
+      - _target_: pl_data.dataset.CrystDataset
         name: Formation energy val
         path: ${data.root_path}/val.csv
         prop: ${data.prop}
@@ -46,7 +46,7 @@ datamodule:
         preprocess_workers: ${data.preprocess_workers}
 
     test:
-      - _target_: cdvae.pl_data.dataset.CrystDataset
+      - _target_: pl_data.dataset.CrystDataset
         name: Formation energy test
         path: ${data.root_path}/test.csv
         prop: ${data.prop}

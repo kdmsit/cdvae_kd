@@ -3,7 +3,7 @@ import pytest
 import numpy as np
 import torch
 from torch_scatter.scatter import scatter
-from cdvae.common import data_utils
+from common import data_utils
 
 
 def test_lattice_params_matrix():
@@ -106,9 +106,9 @@ def test_get_pbc_distances_cart():
     (6, 12),  # test if max_neighbors is satisfied
 ])
 def test_radius_graph_pbc(max_radius, max_neighbors):
-    from cdvae.pl_data.dataset import CrystDataset
+    from pl_data.dataset import CrystDataset
     from torch_geometric.data import Batch
-    from cdvae.common.data_utils import get_scaler_from_data_list
+    from common.data_utils import get_scaler_from_data_list
 
     dir_path = os.path.dirname(os.path.realpath(__file__))
     test_file_path = os.path.join(dir_path, 'test_data.csv')
