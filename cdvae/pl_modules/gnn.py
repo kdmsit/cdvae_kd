@@ -287,9 +287,12 @@ class DimeNetPlusPlus(torch.nn.Module):
         num_triplets = adj_t_row.set_value(None).sum(dim=1).to(torch.long)
 
         # Node indices (k->j->i) for triplets.
-        # print(col.device)
-        # print(num_triplets.device)
-        num_triplets.cuda()
+        print(col.device)
+        print(num_triplets.device)
+        num_triplets = num_triplets.to(col.device)
+        print(col.device)
+        print(num_triplets.device)
+        
         idx_i = col.repeat_interleave(num_triplets)
         idx_j = row.repeat_interleave(num_triplets)
         idx_k = adj_t_row.storage.col()
