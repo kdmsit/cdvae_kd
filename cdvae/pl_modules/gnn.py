@@ -290,10 +290,10 @@ class DimeNetPlusPlus(torch.nn.Module):
         print(col.device)
         print(num_triplets.device)
         num_triplets = num_triplets.to(col.device)
-        print(col.device)
-        print(num_triplets.device)
-        
         idx_i = col.repeat_interleave(num_triplets)
+
+        print(row.device)
+        print(num_triplets.device)
         idx_j = row.repeat_interleave(num_triplets)
         idx_k = adj_t_row.storage.col()
         mask = idx_i != idx_k  # Remove i == k triplets.
