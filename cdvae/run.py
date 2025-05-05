@@ -157,8 +157,8 @@ def run(cfg: DictConfig) -> None:
     trainer.test(datamodule=datamodule)
 
     # Logger closing to release resources/avoid multi-run conflicts
-    if wandb_logger is not None:
-        wandb_logger.experiment.finish()
+    # if wandb_logger is not None:
+    #     wandb_logger.experiment.finish()
 
 
 @hydra.main(config_path=str(PROJECT_ROOT / "conf"), config_name="default")
