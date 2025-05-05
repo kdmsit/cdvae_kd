@@ -69,7 +69,7 @@ def load_model(model_path, load_data=False, testing=True):
                 [int(ckpt.parts[-1].split('-')[0].split('=')[1]) for ckpt in ckpts])
             ckpt = str(ckpts[ckpt_epochs.argsort()[-1]])
         hparams = os.path.join(model_path, "hparams.yaml")
-        model = CDVAE.load_from_checkpoint(ckpt, hparams_file=hparams, strict=False)
+        model = CDVAE.load_from_checkpoint(ckpt, strict=False)
 
         model.lattice_scaler = torch.load(model_path / 'lattice_scaler.pt')
         model.scaler = torch.load(model_path / 'prop_scaler.pt')
