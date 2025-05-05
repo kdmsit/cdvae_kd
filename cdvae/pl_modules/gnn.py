@@ -275,11 +275,14 @@ class DimeNetPlusPlus(torch.nn.Module):
             row=col, col=row, value=value, sparse_sizes=(num_nodes, num_nodes)
         )
 
-        adj_t = adj_t.cpu()
-        row = row.cpu()
-        adj_t_row = adj_t[row]
-        adj_t_row.cuda()
+        # adj_t = adj_t.cpu()
+        # row = row.cpu()
         # adj_t_row = adj_t[row]
+        # adj_t_row.cuda()
+        print(row.is_cuda)
+        print(adj_t.is_cuda)
+
+        adj_t_row = adj_t[row]
 
         num_triplets = adj_t_row.set_value(None).sum(dim=1).to(torch.long)
 
