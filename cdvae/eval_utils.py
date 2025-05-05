@@ -68,16 +68,14 @@ def load_model(model_path, load_data=False, testing=True):
             ckpt_epochs = np.array(
                 [int(ckpt.parts[-1].split('-')[0].split('=')[1]) for ckpt in ckpts])
             ckpt = str(ckpts[ckpt_epochs.argsort()[-1]])
-        hparams = os.path.join(model_path, "hparams.yaml")
+        # hparams = os.path.join(model_path, "hparams.yaml")
         model = CDVAE.load_from_checkpoint(ckpt, strict=False)
 
         model.lattice_scaler = torch.load(model_path / 'lattice_scaler.pt',weights_only=False)
         model.scaler = torch.load(model_path / 'prop_scaler.pt',weights_only=False)
 
         if load_data:
-            datamodule = hydra.utils.instantiate(
-                cfg.data.datamodule, _recursive_=False, scaler_path=model_path
-            )
+            datamodule = hydra.utils.instantiate(cfg.data.datamodule, _recursive_=False, scaler_path=model_path)
             if testing:
                 datamodule.setup('test')
                 test_loader = datamodule.test_dataloader()[0]
