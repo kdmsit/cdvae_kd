@@ -271,18 +271,14 @@ class DimeNetPlusPlus(torch.nn.Module):
         # row, col = col, row  # Swap because my definition of edge_index is i->j
 
         value = torch.arange(row.size(0), device=row.device)
-        adj_t = SparseTensor(
-            row=col, col=row, value=value, sparse_sizes=(num_nodes, num_nodes)
-        )
+        adj_t = SparseTensor(row=col, col=row, value=value, sparse_sizes=(num_nodes, num_nodes))
 
         # adj_t = adj_t.cpu()
-        # row = row.cpu()
-        # adj_t_row = adj_t[row]
-        # adj_t_row.cuda()
-        print(row.device)  # Check if 'cuda' is shown
-        print(adj_t.device)
-
+        row = row.cpu()
         adj_t_row = adj_t[row]
+        
+
+        # adj_t_row = adj_t[row]
 
         num_triplets = adj_t_row.set_value(None).sum(dim=1).to(torch.long)
 
