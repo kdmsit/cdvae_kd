@@ -276,8 +276,10 @@ class DimeNetPlusPlus(torch.nn.Module):
         adj_t = adj_t.cpu()
         row = row.cpu()
         adj_t_row = adj_t[row]
+
         adj_t_row.cuda()
         row.cuda()
+        adj_t.cuda()
 
 
         # adj_t_row = adj_t[row]
