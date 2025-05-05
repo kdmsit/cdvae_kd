@@ -16,6 +16,7 @@ from common.constants import CompScalerMeans, CompScalerStds
 from common.data_utils import StandardScaler, chemical_symbols
 from pl_data.dataset import TensorCrystDataset
 from pl_data.datamodule import worker_init_fn
+from pl_modules.model.CDVAE import CDVAE
 
 from torch_geometric.data import DataLoader
 
@@ -67,7 +68,7 @@ def load_model(model_path, load_data=False, testing=True):
             ckpt_epochs = np.array(
                 [int(ckpt.parts[-1].split('-')[0].split('=')[1]) for ckpt in ckpts])
             ckpt = str(ckpts[ckpt_epochs.argsort()[-1]])
-        model = model.load_from_checkpoint(ckpt)
+        model = CDVAE.load_from_checkpoint(ckpt)
         model.lattice_scaler = torch.load(model_path / 'lattice_scaler.pt')
         model.scaler = torch.load(model_path / 'prop_scaler.pt')
 
