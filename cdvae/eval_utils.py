@@ -71,8 +71,8 @@ def load_model(model_path, load_data=False, testing=True):
         hparams = os.path.join(model_path, "hparams.yaml")
         model = CDVAE.load_from_checkpoint(ckpt, strict=False)
 
-        model.lattice_scaler = torch.load(model_path / 'lattice_scaler.pt')
-        model.scaler = torch.load(model_path / 'prop_scaler.pt')
+        model.lattice_scaler = torch.load(model_path / 'lattice_scaler.pt',weights_only=False)
+        model.scaler = torch.load(model_path / 'prop_scaler.pt',weights_only=False)
 
         if load_data:
             datamodule = hydra.utils.instantiate(
