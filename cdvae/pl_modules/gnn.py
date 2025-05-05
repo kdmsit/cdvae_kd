@@ -278,8 +278,9 @@ class DimeNetPlusPlus(torch.nn.Module):
         adj_t = adj_t.cpu()
         row = row.cpu()
         adj_t_row = adj_t[row]
+        adj_t_row.cuda()
         # adj_t_row = adj_t[row]
-        
+
         num_triplets = adj_t_row.set_value(None).sum(dim=1).to(torch.long)
 
         # Node indices (k->j->i) for triplets.
