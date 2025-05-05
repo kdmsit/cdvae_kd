@@ -287,6 +287,8 @@ class DimeNetPlusPlus(torch.nn.Module):
         num_triplets = adj_t_row.set_value(None).sum(dim=1).to(torch.long)
 
         # Node indices (k->j->i) for triplets.
+        print(col.device)
+        print(num_triplets.device)
         idx_i = col.repeat_interleave(num_triplets)
         idx_j = row.repeat_interleave(num_triplets)
         idx_k = adj_t_row.storage.col()
@@ -380,9 +382,6 @@ class DimeNetPlusPlusWrap(DimeNetPlusPlus):
         offsets = out["offsets"]
 
         j, i = edge_index
-        print(edge_index.device)
-        print(data.atom_types.device)
-        print(self.triplets)
         _, _, idx_i, idx_j, idx_k, idx_kj, idx_ji = self.triplets(edge_index, num_nodes=data.atom_types.size(0))
 
         # Calculate angles.
