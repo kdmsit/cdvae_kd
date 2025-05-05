@@ -16,7 +16,7 @@ from common.constants import CompScalerMeans, CompScalerStds
 from common.data_utils import StandardScaler, chemical_symbols
 from pl_data.dataset import TensorCrystDataset
 from pl_data.datamodule import worker_init_fn
-from pl_modules.model.CDVAE import CDVAE
+from pl_modules.model import CDVAE
 
 from torch_geometric.data import DataLoader
 
