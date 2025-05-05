@@ -274,9 +274,11 @@ class DimeNetPlusPlus(torch.nn.Module):
         adj_t = SparseTensor(row=col, col=row, value=value, sparse_sizes=(num_nodes, num_nodes))
 
         adj_t = adj_t.cpu()
-        # row = row.cpu()
+        row = row.cpu()
         adj_t_row = adj_t[row]
-        
+        adj_t_row.cuda()
+        row.cuda()
+
 
         # adj_t_row = adj_t[row]
 
