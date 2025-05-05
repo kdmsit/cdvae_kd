@@ -272,7 +272,14 @@ class GemNetT(torch.nn.Module):
             value=value,
             sparse_sizes=(num_atoms, num_atoms),
         )
+
+        adj = adj.cpu()
+        idx_t = idx_t.cpu()
         adj_edges = adj[idx_t]
+
+        adj_edges = adj_edges.to('cuda')
+        adj = adj.to('cuda')
+        idx_t = idx_t.to('cuda')
 
         # Edge indices (b->a, c->a) for triplets.
         id3_ba = adj_edges.storage.value()
