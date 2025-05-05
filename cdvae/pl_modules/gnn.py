@@ -378,10 +378,8 @@ class DimeNetPlusPlusWrap(DimeNetPlusPlus):
         offsets = out["offsets"]
 
         j, i = edge_index
-
-        _, _, idx_i, idx_j, idx_k, idx_kj, idx_ji = self.triplets(
-            edge_index, num_nodes=data.atom_types.size(0)
-        )
+        print(edge_index.device)
+        _, _, idx_i, idx_j, idx_k, idx_kj, idx_ji = self.triplets(edge_index, num_nodes=data.atom_types.size(0))
 
         # Calculate angles.
         pos_i = pos[idx_i].detach()
