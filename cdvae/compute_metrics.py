@@ -207,11 +207,11 @@ class GenEval(object):
     def get_metrics(self):
         metrics = {}
         metrics.update(self.get_validity())
-        metrics.update(self.get_comp_diversity())
-        metrics.update(self.get_struct_diversity())
+        # metrics.update(self.get_comp_diversity())
+        # metrics.update(self.get_struct_diversity())
         metrics.update(self.get_density_wdist())
         metrics.update(self.get_num_elem_wdist())
-        metrics.update(self.get_prop_wdist())
+        # metrics.update(self.get_prop_wdist())
         print(metrics)
         metrics.update(self.get_coverage())
         return metrics
