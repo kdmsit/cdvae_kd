@@ -80,8 +80,7 @@ chemical_symbols = [
     'Lv', 'Ts', 'Og']
 
 
-CrystalNN = local_env.CrystalNN(
-    distance_cutoffs=None, x_diff_weight=-1, porous_adjustment=False)
+CrystalNN = local_env.CrystalNN(distance_cutoffs=None, x_diff_weight=-1, porous_adjustment=False)
 
 
 def build_crystal(crystal_str, niggli=True, primitive=False):

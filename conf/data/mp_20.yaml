@@ -14,7 +14,7 @@ otf_graph: false
 eval_model_name: mp20
 
 
-train_max_epochs: 500 #1000
+train_max_epochs: 1000
 early_stopping_patience: 100000
 teacher_forcing_max_epoch: 500
 
