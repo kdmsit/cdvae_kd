@@ -9,9 +9,10 @@ graph_method: crystalnn
 lattice_scale_method: scale_length
 preprocess_workers: 30
 readout: mean
-max_atoms: 20
+max_atoms: 52
 otf_graph: false
 eval_model_name: mp20
+tolerance: 0.1
 
 
 train_max_epochs: 500 #1000
