@@ -1,0 +1,1 @@
+CUDA_VISIBLE_DEVICES=0 python3 -W ignore run.py data=mpts_52 expname=mpts_52
