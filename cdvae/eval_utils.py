@@ -36,7 +36,7 @@ def load_data(file_path):
             else:
                 data[k] = torch.from_numpy(v).unsqueeze(0)
     else:
-        data = torch.load(file_path)
+        data = torch.load(file_path,weights_only=False)
     return data
 
 
