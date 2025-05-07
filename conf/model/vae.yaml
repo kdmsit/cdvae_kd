@@ -19,7 +19,7 @@ sigma_begin: 10.
 sigma_end: 0.01
 type_sigma_begin: 5.
 type_sigma_end: 0.01
-num_noise_level: 1 #50
+num_noise_level: 50 #50
 predict_property: False
 
 defaults:
