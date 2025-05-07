@@ -28,3 +28,7 @@ python3 -W ignore  compute_metrics.py --root_path /home/kishalay-ng/workplace/cd
 {'comp_valid': 1.0, 'struct_valid': 0.7246, 'valid': 0.7246,
 'wdist_density': 0.23899625910321595, 'wdist_num_elems': 0.0,
 'cov_recall': 0.0, 'cov_precision': 0.0}
+
+{'comp_valid': 1.0, 'struct_valid': 0.7255, 'valid': 0.7255,
+'wdist_density': 0.18072070270961207, 'wdist_num_elems': 0.0,
+'cov_recall': 0.0, 'cov_precision': 0.0

@@ -129,13 +129,13 @@ def run(cfg: DictConfig) -> None:
     (hydra_dir / "hparams.yaml").write_text(yaml_conf)
 
     #Load checkpoint (if exist)
-    # ckpts = list(hydra_dir.glob('*.ckpt'))
-    # if len(ckpts) > 0:
-    #     ckpt_epochs = np.array([int(ckpt.parts[-1].split('-')[0].split('=')[1]) for ckpt in ckpts])
-    #     ckpt = str(ckpts[ckpt_epochs.argsort()[-1]])
-    #     hydra.utils.log.info(f"found checkpoint: {ckpt}")
-    # else:
-    #     ckpt = None
+    ckpts = list(hydra_dir.glob('*.ckpt'))
+    if len(ckpts) > 0:
+        ckpt_epochs = np.array([int(ckpt.parts[-1].split('-')[0].split('=')[1]) for ckpt in ckpts])
+        ckpt = str(ckpts[ckpt_epochs.argsort()[-1]])
+        hydra.utils.log.info(f"found checkpoint: {ckpt}")
+    else:
+        ckpt = None
           
     hydra.utils.log.info("Instantiating the Trainer")
     trainer = pl.Trainer(
@@ -151,7 +151,7 @@ def run(cfg: DictConfig) -> None:
     log_hyperparameters(trainer=trainer, model=model, cfg=cfg)
 
     hydra.utils.log.info("Starting training!")
-    trainer.fit(model=model, datamodule=datamodule)
+    trainer.fit(model=model, datamodule=datamodule, ckpt_path=ckpt)
 
     hydra.utils.log.info("Starting testing!")
     trainer.test(datamodule=datamodule)
