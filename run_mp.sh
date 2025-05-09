@@ -18,6 +18,8 @@ python3 -W ignore  compute_metrics.py --root_path /home/kishalay-ng/workplace/cd
 'wdist_density': 0.3723108128578442, 'wdist_num_elems': 0.7853659075834624,
 'cov_recall': 0.4941410568206942, 'cov_precision': 0.9945,}
 
+CUDA_VISIBLE_DEVICES=0 python3 -W ignore evaluate.py --model_path /home/kishalay-ng/workplace/cdvae_kd/singlerun/2025-05-07/mp_20 --tasks gen --num_batches_to_samples 1
+ 13 sec
 
 ## Steps - 5000
 
